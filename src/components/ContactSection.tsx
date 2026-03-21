@@ -39,12 +39,10 @@ const ContactSection = () => {
         >
           <span className="section-label">{t("contact.label")}</span>
           <h2 className="section-title">{t("contact.title")}</h2>
-          <p className="text-body mt-4 max-w-xl">
-            {t("contact.description")}
-          </p>
+          <p className="text-body mt-4 max-w-xl">{t("contact.description")}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
+        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Left - Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -55,19 +53,15 @@ const ContactSection = () => {
           >
             <div className="space-y-6">
               {contactLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-12 h-12 rounded-xl border border-border bg-secondary/50 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/30 transition-all duration-300">
+                <a key={link.label} href={link.href} className="group flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-secondary/50 text-muted-foreground transition-all duration-300 group-hover:border-primary/30 group-hover:text-primary">
                     <link.icon size={20} />
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
+                    <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                       {link.label}
                     </div>
-                    <div className="text-foreground group-hover:text-primary transition-colors">
+                    <div className="text-foreground transition-colors group-hover:text-primary">
                       {link.value}
                     </div>
                   </div>
@@ -82,38 +76,44 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={spring}
-            className="glass-card p-8 rounded-2xl"
+            className="glass-card rounded-2xl p-8"
           >
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("contact.form.name")}</label>
+                  <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    {t("contact.form.name")}
+                  </label>
                   <input
                     type="text"
                     placeholder={t("contact.form.placeholder.name")}
-                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary/50 focus:ring-1 focus:ring-primary/50 outline-none transition-all text-sm"
+                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("contact.form.email")}</label>
+                  <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    {t("contact.form.email")}
+                  </label>
                   <input
                     type="email"
                     placeholder={t("contact.form.placeholder.email")}
-                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary/50 focus:ring-1 focus:ring-primary/50 outline-none transition-all text-sm"
+                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("contact.form.message")}</label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  {t("contact.form.message")}
+                </label>
                 <textarea
                   placeholder={t("contact.form.placeholder.message")}
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary/50 focus:ring-1 focus:ring-primary/50 outline-none transition-all text-sm resize-none"
+                  className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full py-4 bg-primary text-primary-foreground rounded-xl font-semibold text-sm hover:brightness-110 transition-all shimmer-button"
+                className="shimmer-button w-full rounded-xl bg-primary py-4 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
               >
                 {t("contact.form.submit")}
               </button>
@@ -122,13 +122,11 @@ const ContactSection = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-24 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-24 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <span className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Krishnakanth Kondoju. Built with React, TypeScript & NX
           </span>
-          <span className="text-sm text-muted-foreground">
-            {t("contact.footer")}
-          </span>
+          <span className="text-sm text-muted-foreground">{t("contact.footer")}</span>
         </div>
       </div>
     </section>

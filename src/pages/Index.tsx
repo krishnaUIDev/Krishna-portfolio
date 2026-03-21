@@ -4,17 +4,30 @@ import AboutSection from "@/components/AboutSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import AIChatbot from "@/components/AIChatbot";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
       {/* Background decorative blobs for glass effect visibility */}
-      <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow" style={{ animationDuration: '8s' }} />
-      <div className="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow" style={{ animationDuration: '12s' }} />
-      <div className="fixed top-[40%] left-[20%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none animate-pulse-glow" style={{ animationDuration: '10s' }} />
-      <div className="fixed top-[10%] right-[20%] w-[30%] h-[30%] bg-orange-400/10 rounded-full blur-[100px] pointer-events-none animate-pulse-glow" style={{ animationDuration: '15s' }} />
+      <div
+        className="pointer-events-none fixed left-[-10%] top-[-10%] h-[50%] w-[50%] animate-pulse-glow rounded-full bg-primary/20 blur-[120px]"
+        style={{ animationDuration: "8s" }}
+      />
+      <div
+        className="pointer-events-none fixed bottom-[-10%] right-[-10%] h-[50%] w-[50%] animate-pulse-glow rounded-full bg-blue-500/20 blur-[120px]"
+        style={{ animationDuration: "12s" }}
+      />
+      <div
+        className="pointer-events-none fixed left-[20%] top-[40%] h-[40%] w-[40%] animate-pulse-glow rounded-full bg-purple-600/10 blur-[100px]"
+        style={{ animationDuration: "10s" }}
+      />
+      <div
+        className="pointer-events-none fixed right-[20%] top-[10%] h-[30%] w-[30%] animate-pulse-glow rounded-full bg-orange-400/10 blur-[100px]"
+        style={{ animationDuration: "15s" }}
+      />
 
       <Navbar />
       <HeroSection />
@@ -22,6 +35,7 @@ const Index = () => {
       <ExperienceSection />
       <SkillsSection />
       <ProjectsSection />
+      <BlogSection />
       <ContactSection />
 
       {/* AI Assistant */}

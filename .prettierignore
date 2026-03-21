@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+public
+*.log
+package-lock.json
+bun.lock
+bun.lockb
+.env
+.env.*

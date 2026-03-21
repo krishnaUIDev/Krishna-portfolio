@@ -6,10 +6,41 @@ const icons = [Globe, Layout, Database, Terminal, ShieldCheck, Settings2];
 
 // Skills don't need translation as they are technical terms
 const skillLists = [
-  ["ReactJS", "NextJS", "Astro JS", "TypeScript", "JavaScript", "HTML5", "CSS3", "Zustand", "GraphQL", "RESTful APIs"],
-  ["NodeJS", "NestJS", "Express.js", "AngularJS", "Bootstrap", "Tailwind CSS", "jQuery", "D3JS", "SASS", "LESS"],
+  [
+    "ReactJS",
+    "NextJS",
+    "Astro JS",
+    "TypeScript",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Zustand",
+    "GraphQL",
+    "RESTful APIs",
+  ],
+  [
+    "NodeJS",
+    "NestJS",
+    "Express.js",
+    "AngularJS",
+    "Bootstrap",
+    "Tailwind CSS",
+    "jQuery",
+    "D3JS",
+    "SASS",
+    "LESS",
+  ],
   ["MongoDB", "MySQL", "PostgreSQL", "SQL Server", "Redis"],
-  ["Git", "GitLab", "Argo CD", "Jenkins", "Helm Charts", "OpenShift", "GitHub Actions", "NX Monorepo"],
+  [
+    "Git",
+    "GitLab",
+    "Argo CD",
+    "Jenkins",
+    "Helm Charts",
+    "OpenShift",
+    "GitHub Actions",
+    "NX Monorepo",
+  ],
   ["Jest", "Enzyme", "React Testing Library", "Jasmine", "Karma", "Playwright", "Chrome Inspector"],
   ["WebSphere", "JBoss", "Apache Tomcat", "Splunk", "Jira", "Agile/Scrum"],
 ];
@@ -40,12 +71,10 @@ const SkillsSection = () => {
         >
           <span className="section-label">{t("skills.label")}</span>
           <h2 className="section-title">{t("skills.title")}</h2>
-          <p className="text-body mt-4 max-w-xl">
-            {t("skills.description")}
-          </p>
+          <p className="text-body mt-4 max-w-xl">{t("skills.description")}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, i) => (
             <motion.div
               key={i}
@@ -53,10 +82,10 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ ...spring, delay: i * 0.05 }}
-              className="surface-card p-6 hover:border-primary/30 transition-colors duration-300"
+              className="surface-card p-6 transition-colors duration-300 hover:border-primary/30"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-primary/10 text-primary">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="rounded-lg bg-primary/10 p-2 text-primary">
                   <group.icon size={18} />
                 </div>
                 <h3 className="text-sm font-semibold text-foreground">{group.title}</h3>

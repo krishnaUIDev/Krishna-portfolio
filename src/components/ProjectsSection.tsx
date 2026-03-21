@@ -30,12 +30,10 @@ const ProjectsSection = () => {
         >
           <span className="section-label">{t("projects.label")}</span>
           <h2 className="section-title">{t("projects.title")}</h2>
-          <p className="text-body mt-4 max-w-xl">
-            {t("projects.description")}
-          </p>
+          <p className="text-body mt-4 max-w-xl">{t("projects.description")}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
           {projects.map((project, i) => (
             <motion.div
               key={i}
@@ -43,22 +41,26 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ ...spring, delay: i * 0.08 }}
-              className="surface-card p-6 group hover:border-primary/30 transition-all duration-300"
+              className="surface-card group p-6 transition-all duration-300 hover:border-primary/30"
             >
-              <div className="flex items-center justify-between mb-4">
+              <div className="mb-4 flex items-center justify-between">
                 <span className="text-2xl">{project.emoji}</span>
                 <span className="text-data text-muted-foreground">{project.period}</span>
               </div>
 
-              <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                 {project.title}
               </h3>
-              <p className="text-sm text-primary/70 mt-1">{project.company}</p>
-              <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{project.description}</p>
+              <p className="mt-1 text-sm text-primary/70">{project.company}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {project.description}
+              </p>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
-                  <span key={tag} className="tag-tech">{tag}</span>
+                  <span key={tag} className="tag-tech">
+                    {tag}
+                  </span>
                 ))}
               </div>
             </motion.div>

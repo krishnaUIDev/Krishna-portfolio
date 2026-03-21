@@ -1,231 +1,187 @@
 {
-    "nav": {
-        "about": "About",
-        "experience": "Experience",
-        "skills": "Skills",
-        "projects": "Projects",
-        "contact": "Contact"
-    },
-    "hero": {
-        "badge": "Available for new opportunities",
-        "greeting": "Hey, I'm",
-        "role": "Full Stack Developer | Tech Lead",
-        "description": "10+ years building high-performance web applications with React, Node.js, TypeScript, and NX — focused on clean architecture, great UX, and scalable systems.",
-        "buttons": {
-            "meeting": "Book a Meeting",
-            "resume": "Download Resume",
-            "contact": "Contact Me"
-        }
-    },
-    "about": {
-        "label": "About Me",
-        "title": "Passionate engineer, focused on impact",
-        "quote": "Building the future of web with precision and passion.",
-        "p1": "I'm a Full Stack Developer with <strong class='text-foreground'>10 years of expertise</strong> in designing and building dynamic web applications. My experience spans modern JavaScript frameworks like <strong class='text-foreground'>ReactJS, NextJS, NestJS, and NodeJS</strong>, with a deep understanding of component-driven development and scalable architecture.",
-        "p2": "I specialize in building high-performance systems — from responsive, mobile-friendly UIs to secure, microservices-ready backends. I have a strong track record of delivering enterprise-level modernization initiatives and leading technical teams toward excellence in performance, accessibility, and maintainability.",
-        "expertise_list": [
-            "Full Stack Development (React, NestJS, Node.js)",
-            "Modern UI Architectures & Component Libraries",
-            "BFF (Backend for Frontend) Design Patterns",
-            "Performance Tuning & Scalability",
-            "CI/CD Pipelines & Containerization",
-            "Technical Leadership & Mentorship"
-        ]
-    },
-    "experience": {
-        "label": "Work History",
-        "title": "Professional Experience",
-        "jobs": [
-            {
-                "company": "Costco Wholesale - Seattle, WA",
-                "role": "Full Stack Developer (Cognizant)",
-                "period": "May 2025 – Till Now",
-                "description": "Contributing to one of Costco’s largest enterprise modernization initiatives—a ground-up rebuild of legacy systems to improve scalability and operational efficiency.",
-                "highlights": [
-                    "Designed and developed scalable backend services using Node.js and NestJS",
-                    "Implemented secure authentication and authorization using JWT and RBAC",
-                    "Built a NestJS-based Backend for Frontend (BFF) layer to aggregate and transform API responses",
-                    "Leveraged GitHub Copilot to accelerate development and improve code quality"
-                ],
-                "tags": [
-                    "ReactJS",
-                    "TypeScript",
-                    "NestJS",
-                    "NodeJS",
-                    "Zustand",
-                    "Argo CD"
-                ]
-            },
-            {
-                "company": "GuideWell Source – Jacksonville, FL",
-                "role": "Full Stack Developer",
-                "period": "Nov 2020 – May 2025",
-                "description": "Redesigned core modules of the 'Letter Connect App' and built internal libraries of reusable React components published to Artifactory.",
-                "highlights": [
-                    "Built robust React components and implemented scalable state management using Redux and Hooks",
-                    "Migrated to npm workspaces for simplified dependency management in Node.js v22",
-                    "Reduced application load times by 30% using React.lazy and code-splitting",
-                    "Decoupled deployment pipelines for micro-apps, reducing coordination effort by 40%"
-                ],
-                "tags": [
-                    "ReactJS",
-                    "Redux",
-                    "Node.js",
-                    "Express.js",
-                    "Material UI",
-                    "Tailwind"
-                ]
-            },
-            {
-                "company": "Blue Cross and Blue Shield of Florida",
-                "role": "Web Application Developer",
-                "period": "Jan 2018- Nov 2020",
-                "description": "Developed dynamic, responsive web pages and reusable UI components using ReactJS and Material UI.",
-                "highlights": [
-                    "Migrated legacy JavaScript codebases to TypeScript for better maintainability",
-                    "Built scalable RESTful services using Node.js, Express.js, and MongoDB",
-                    "Reduced code duplication by 25% through modular and reusable React components",
-                    "Optimized backend performance through caching strategies and efficient database queries"
-                ],
-                "tags": [
-                    "ReactJS",
-                    "TypeScript",
-                    "Node.js",
-                    "MongoDB",
-                    "Material UI",
-                    "SASS"
-                ]
-            },
-            {
-                "company": "New Jersey Immunization System",
-                "role": "UI Developer",
-                "period": "Jan 2017 - Dec 2017",
-                "description": "Designed use cases and developed technical requirement documents for immunization web applications.",
-                "highlights": [
-                    "Developed SPA using Angular 2, Bootstrap 3, and SASS with mobile-first design",
-                    "Implemented Angular Router for seamless navigation across application tasks",
-                    "Ensured accessibility standards compliance for screen readers (WCAG)",
-                    "Used Local Storage and IndexedDB for client-side data persistence"
-                ],
-                "tags": [
-                    "Angular 2",
-                    "TypeScript",
-                    "Bootstrap 3",
-                    "SASS",
-                    "RxJS",
-                    "IndexedDB"
-                ]
-            }
-        ]
-    },
-    "skills": {
-        "label": "What I Know",
-        "title": "Technical Skills",
-        "description": "A broad toolkit across the full stack, from modern frontend frameworks to cloud infrastructure.",
-        "groups": [
-            {
-                "title": "Web Technologies"
-            },
-            {
-                "title": "Frameworks & Runtimes"
-            },
-            {
-                "title": "Databases"
-            },
-            {
-                "title": "Tools & DevOps"
-            },
-            {
-                "title": "Testing & Debugging"
-            },
-            {
-                "title": "Other"
-            }
-        ]
-    },
-    "projects": {
-        "label": "My Work",
-        "title": "Featured Projects",
-        "description": "A selection of impactful projects spanning enterprise, fintech, healthcare, and e-commerce.",
-        "list": [
-            {
-                "emoji": "📦",
-                "period": "2025-Present",
-                "title": "Costco Vendor Applications",
-                "company": "Costco Wholesale",
-                "description": "Developed and enhanced high-impact business applications for vendor management and delivery service messaging.",
-                "tags": [
-                    "ReactJS",
-                    "TypeScript",
-                    "NestJS",
-                    "NodeJS",
-                    "Zustand",
-                    "Argo CD"
-                ]
-            },
-            {
-                "emoji": "✉️",
-                "period": "2020-2025",
-                "title": "Letter Connect App",
-                "company": "GuideWell Source",
-                "description": "Redesigned core modules using Material-UI and Redux, improving maintainability and modularity of the letter generation system.",
-                "tags": [
-                    "ReactJS",
-                    "Redux",
-                    "Material-UI",
-                    "Styled-Components",
-                    "TypeScript"
-                ]
-            },
-            {
-                "emoji": "🛠️",
-                "period": "Ongoing",
-                "title": "UI Webkit",
-                "company": "Personal Project",
-                "description": "A comprehensive library of reusable UI components and utilities for modern web development.",
-                "tags": [
-                    "React",
-                    "Storybook",
-                    "Tailwind",
-                    "Design System"
-                ]
-            },
-            {
-                "emoji": "💉",
-                "period": "2017",
-                "title": "Jersey Immunization System",
-                "company": "New Jersey State",
-                "description": "Developed a single-page application for managing immunization records with high accessibility standards.",
-                "tags": [
-                    "Angular 2",
-                    "Bootstrap 3",
-                    "SASS",
-                    "RxJS",
-                    "WCAG"
-                ]
-            }
-        ]
-    },
-    "notfound": {
-        "title": "404",
-        "message": "Oops! Page not found",
-        "return": "Return to Home"
-    },
-    "contact": {
-        "label": "Get In Touch",
-        "title": "Let's Work Together",
-        "description": "I'm always open to discussing new projects, technical challenges, or opportunities to be part of something impactful.",
-        "form": {
-            "name": "Name",
-            "email": "Email",
-            "message": "Message",
-            "placeholder": {
-                "name": "John Doe",
-                "email": "john@example.com",
-                "message": "Tell me about your project..."
-            },
-            "submit": "Send Message"
-        },
-        "footer": "St.Augustine, FL"
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Available for new opportunities",
+    "greeting": "Hey, I'm",
+    "role": "Full Stack Developer | Tech Lead",
+    "description": "10+ years building high-performance web applications with React, Node.js, TypeScript, and NX — focused on clean architecture, great UX, and scalable systems.",
+    "buttons": {
+      "meeting": "Book a Meeting",
+      "resume": "Download Resume",
+      "contact": "Contact Me"
     }
+  },
+  "about": {
+    "label": "About Me",
+    "title": "Passionate engineer, focused on impact",
+    "quote": "Building the future of web with precision and passion.",
+    "p1": "I'm a Full Stack Developer with <strong class='text-foreground'>10 years of expertise</strong> in designing and building dynamic web applications. My experience spans modern JavaScript frameworks like <strong class='text-foreground'>ReactJS, NextJS, NestJS, and NodeJS</strong>, with a deep understanding of component-driven development and scalable architecture.",
+    "p2": "I specialize in building high-performance systems — from responsive, mobile-friendly UIs to secure, microservices-ready backends. I have a strong track record of delivering enterprise-level modernization initiatives and leading technical teams toward excellence in performance, accessibility, and maintainability.",
+    "expertise_list": [
+      "Full Stack Development (React, NestJS, Node.js)",
+      "Modern UI Architectures & Component Libraries",
+      "BFF (Backend for Frontend) Design Patterns",
+      "Performance Tuning & Scalability",
+      "CI/CD Pipelines & Containerization",
+      "Technical Leadership & Mentorship"
+    ]
+  },
+  "experience": {
+    "label": "Work History",
+    "title": "Professional Experience",
+    "jobs": [
+      {
+        "company": "Costco Wholesale - Seattle, WA",
+        "role": "Full Stack Developer (Cognizant)",
+        "period": "May 2025 – Till Now",
+        "description": "Contributing to one of Costco’s largest enterprise modernization initiatives—a ground-up rebuild of legacy systems to improve scalability and operational efficiency.",
+        "highlights": [
+          "Designed and developed scalable backend services using Node.js and NestJS",
+          "Implemented secure authentication and authorization using JWT and RBAC",
+          "Built a NestJS-based Backend for Frontend (BFF) layer to aggregate and transform API responses",
+          "Leveraged GitHub Copilot to accelerate development and improve code quality"
+        ],
+        "tags": ["ReactJS", "TypeScript", "NestJS", "NodeJS", "Zustand", "Argo CD"]
+      },
+      {
+        "company": "GuideWell Source – Jacksonville, FL",
+        "role": "Full Stack Developer",
+        "period": "Nov 2020 – May 2025",
+        "description": "Redesigned core modules of the 'Letter Connect App' and built internal libraries of reusable React components published to Artifactory.",
+        "highlights": [
+          "Built robust React components and implemented scalable state management using Redux and Hooks",
+          "Migrated to npm workspaces for simplified dependency management in Node.js v22",
+          "Reduced application load times by 30% using React.lazy and code-splitting",
+          "Decoupled deployment pipelines for micro-apps, reducing coordination effort by 40%"
+        ],
+        "tags": ["ReactJS", "Redux", "Node.js", "Express.js", "Material UI", "Tailwind"]
+      },
+      {
+        "company": "Blue Cross and Blue Shield of Florida",
+        "role": "Web Application Developer",
+        "period": "Jan 2018- Nov 2020",
+        "description": "Developed dynamic, responsive web pages and reusable UI components using ReactJS and Material UI.",
+        "highlights": [
+          "Migrated legacy JavaScript codebases to TypeScript for better maintainability",
+          "Built scalable RESTful services using Node.js, Express.js, and MongoDB",
+          "Reduced code duplication by 25% through modular and reusable React components",
+          "Optimized backend performance through caching strategies and efficient database queries"
+        ],
+        "tags": ["ReactJS", "TypeScript", "Node.js", "MongoDB", "Material UI", "SASS"]
+      },
+      {
+        "company": "New Jersey Immunization System",
+        "role": "UI Developer",
+        "period": "Jan 2017 - Dec 2017",
+        "description": "Designed use cases and developed technical requirement documents for immunization web applications.",
+        "highlights": [
+          "Developed SPA using Angular 2, Bootstrap 3, and SASS with mobile-first design",
+          "Implemented Angular Router for seamless navigation across application tasks",
+          "Ensured accessibility standards compliance for screen readers (WCAG)",
+          "Used Local Storage and IndexedDB for client-side data persistence"
+        ],
+        "tags": ["Angular 2", "TypeScript", "Bootstrap 3", "SASS", "RxJS", "IndexedDB"]
+      }
+    ]
+  },
+  "skills": {
+    "label": "What I Know",
+    "title": "Technical Skills",
+    "description": "A broad toolkit across the full stack, from modern frontend frameworks to cloud infrastructure.",
+    "groups": [
+      {
+        "title": "Web Technologies"
+      },
+      {
+        "title": "Frameworks & Runtimes"
+      },
+      {
+        "title": "Databases"
+      },
+      {
+        "title": "Tools & DevOps"
+      },
+      {
+        "title": "Testing & Debugging"
+      },
+      {
+        "title": "Other"
+      }
+    ]
+  },
+  "projects": {
+    "label": "My Work",
+    "title": "Featured Projects",
+    "description": "A selection of impactful projects spanning enterprise, fintech, healthcare, and e-commerce.",
+    "list": [
+      {
+        "emoji": "📦",
+        "period": "2025-Present",
+        "title": "Costco Vendor Applications",
+        "company": "Costco Wholesale",
+        "description": "Developed and enhanced high-impact business applications for vendor management and delivery service messaging.",
+        "tags": ["ReactJS", "TypeScript", "NestJS", "NodeJS", "Zustand", "Argo CD"]
+      },
+      {
+        "emoji": "✉️",
+        "period": "2020-2025",
+        "title": "Letter Connect App",
+        "company": "GuideWell Source",
+        "description": "Redesigned core modules using Material-UI and Redux, improving maintainability and modularity of the letter generation system.",
+        "tags": ["ReactJS", "Redux", "Material-UI", "Styled-Components", "TypeScript"]
+      },
+      {
+        "emoji": "🛠️",
+        "period": "Ongoing",
+        "title": "UI Webkit",
+        "company": "Personal Project",
+        "description": "A comprehensive library of reusable UI components and utilities for modern web development.",
+        "tags": ["React", "Storybook", "Tailwind", "Design System"]
+      },
+      {
+        "emoji": "💉",
+        "period": "2017",
+        "title": "Jersey Immunization System",
+        "company": "New Jersey State",
+        "description": "Developed a single-page application for managing immunization records with high accessibility standards.",
+        "tags": ["Angular 2", "Bootstrap 3", "SASS", "RxJS", "WCAG"]
+      }
+    ]
+  },
+  "notfound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "return": "Return to Home"
+  },
+  "blog": {
+    "title": "Latest Stories",
+    "subtitle": "Insights & Musings",
+    "view_all": "Read on Medium",
+    "loading": "Fetching latest stories...",
+    "error": "Failed to load blog posts. Please check back later."
+  },
+  "contact": {
+    "label": "Get In Touch",
+    "title": "Let's Work Together",
+    "description": "I'm always open to discussing new projects, technical challenges, or opportunities to be part of something impactful.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "placeholder": {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "message": "Tell me about your project..."
+      },
+      "submit": "Send Message"
+    },
+    "footer": "St.Augustine, FL"
+  }
 }

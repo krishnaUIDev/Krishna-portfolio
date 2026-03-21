@@ -28,18 +28,21 @@ A premium, high-performance personal portfolio built with a focus on modern aest
 Follow these steps to get the project running on your local machine:
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/krishnaUIDev/Krishna-portfolio.git
    cd Krishna-portfolio
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 3. **Configure Environment Variables**:
    Create a `.env` file based on `.env.example`:
+
    ```bash
    GEMINI_API_KEY=your_key_here
    ```
@@ -61,4 +64,5 @@ Follow these steps to get the project running on your local machine:
 - **Portfolio**: [krishnakondoju.dev](https://krishnakondoju.dev/)
 
 ---
-*Built with precision and passion for modern web standards.*
+
+_Built with precision and passion for modern web standards._

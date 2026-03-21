@@ -5,7 +5,7 @@ import "./i18n";
 import { ThemeProvider } from "./components/ThemeProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
-    <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
-        <App />
-    </ThemeProvider>
+  <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
+    <App />
+  </ThemeProvider>
 );

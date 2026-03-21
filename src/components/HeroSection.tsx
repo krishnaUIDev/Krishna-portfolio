@@ -39,22 +39,22 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center relative overflow-hidden">
+    <section className="relative flex min-h-screen items-center overflow-hidden">
       {/* Subtle gradient background and blobs */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-[100px] animate-pulse-glow pointer-events-none" />
+      <div className="pointer-events-none absolute left-1/4 top-1/4 h-64 w-64 animate-pulse-glow rounded-full bg-primary/20 blur-[100px]" />
 
-      <div className="container-main w-full relative z-10 pt-20 pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container-main relative z-10 w-full pb-12 pt-20">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left content */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...spring, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card mb-8"
+              className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2"
             >
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse-glow" />
+              <span className="h-2 w-2 animate-pulse-glow rounded-full bg-green-500" />
               <span className="text-sm text-muted-foreground">{t("hero.badge")}</span>
             </motion.div>
 
@@ -64,15 +64,14 @@ const HeroSection = () => {
               transition={{ ...spring, delay: 0.2 }}
               className="text-display"
             >
-              {t("hero.greeting")}{" "}
-              <span className="text-primary block">Krishna Kondoju</span>
+              {t("hero.greeting")} <span className="block text-primary">Krishna Kondoju</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...spring, delay: 0.35 }}
-              className="text-xl md:text-2xl font-semibold text-primary/80 mt-4"
+              className="mt-4 text-xl font-semibold text-primary/80 md:text-2xl"
             >
               {t("hero.role")}
             </motion.p>
@@ -95,11 +94,11 @@ const HeroSection = () => {
               <motion.div
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-              // style={{ x: dx, y: dy }}
+                // style={{ x: dx, y: dy }}
               >
                 <button
                   onClick={() => setIsOpen(true)}
-                  className="px-7 py-4 bg-primary text-primary-foreground rounded-xl font-bold text-sm hover:brightness-110 shadow-lg shadow-primary/25 transition-all flex items-center gap-2 group"
+                  className="group flex items-center gap-2 rounded-xl bg-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:brightness-110"
                 >
                   <Calendar size={18} />
                   {t("hero.buttons.meeting")}
@@ -109,12 +108,12 @@ const HeroSection = () => {
               <motion.div
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-              // style={{ x: dx, y: dy }}
+                // style={{ x: dx, y: dy }}
               >
                 <a
                   href="/resume.pdf"
                   download
-                  className="px-7 py-4 border border-border/50 bg-card/30 backdrop-blur-md rounded-xl font-bold text-sm text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all flex items-center gap-2"
+                  className="flex items-center gap-2 rounded-xl border border-border/50 bg-card/30 px-7 py-4 text-sm font-bold text-muted-foreground backdrop-blur-md transition-all hover:border-primary/50 hover:text-foreground"
                 >
                   <FileDown size={18} />
                   {t("hero.buttons.resume")}
@@ -129,10 +128,10 @@ const HeroSection = () => {
               >
                 <a
                   href="#contact"
-                  className="px-6 py-2 font-medium text-sm text-muted-foreground hover:text-primary transition-all flex items-center gap-2 group"
+                  className="group flex items-center gap-2 px-6 py-2 text-sm font-medium text-muted-foreground transition-all hover:text-primary"
                 >
                   {t("hero.buttons.contact")}
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
                 </a>
               </motion.div>
             </motion.div>
@@ -161,7 +160,7 @@ const HeroSection = () => {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all hover:border-foreground/30 hover:text-foreground"
                 >
                   <Icon size={16} />
                 </a>
@@ -177,43 +176,48 @@ const HeroSection = () => {
             className="relative flex justify-center"
           >
             {/* 3D Flip Avatar Card */}
-            <div className="relative group w-72 h-72 md:w-80 md:h-80 perspective-1000">
+            <div className="perspective-1000 group relative h-72 w-72 md:h-80 md:w-80">
               {/* Outer pulsing glow stays behind the flip */}
-              <div className="absolute inset-[-20px] rounded-full bg-primary/15 blur-3xl animate-pulse-glow pointer-events-none" />
+              <div className="pointer-events-none absolute inset-[-20px] animate-pulse-glow rounded-full bg-primary/15 blur-3xl" />
 
               <motion.div
-                className="w-full h-full relative preserve-3d transition-all duration-500 cursor-pointer"
+                className="preserve-3d relative h-full w-full cursor-pointer transition-all duration-500"
                 whileHover={{ rotateY: 180 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
                 {/* Front Side */}
-                <div className="absolute inset-0 backface-hidden z-10">
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center overflow-hidden shadow-2xl backdrop-blur-sm">
+                <div className="backface-hidden absolute inset-0 z-10">
+                  <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-primary/20 bg-gradient-to-br from-primary/20 to-primary/5 shadow-2xl backdrop-blur-sm">
                     <img
                       src="/avatar.png"
                       alt="Krishnakanth Kondoju"
-                      className="w-full h-full object-cover"
+                      className="h-full w-full object-cover"
                     />
                   </div>
                 </div>
 
                 {/* Back Side */}
-                <div className="absolute inset-0 backface-hidden rotate-y-180 z-20">
-                  <div className="w-full h-full rounded-full glass-card flex flex-col items-center justify-center p-8 text-center border-primary/30 shadow-2xl">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <div className="backface-hidden rotate-y-180 absolute inset-0 z-20">
+                  <div className="glass-card flex h-full w-full flex-col items-center justify-center rounded-full border-primary/30 p-8 text-center shadow-2xl">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                       <span className="text-2xl font-bold text-primary">K</span>
                     </div>
                     <h3 className="text-lg font-bold text-foreground">Krishnakanth</h3>
-                    <p className="text-xs font-semibold text-primary/80 uppercase tracking-widest mt-1">Tech Lead</p>
-                    <div className="h-px w-12 bg-border my-3" />
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      10+ Years Expert in<br />
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-primary/80">
+                      Tech Lead
+                    </p>
+                    <div className="my-3 h-px w-12 bg-border" />
+                    <p className="text-xs leading-relaxed text-muted-foreground">
+                      10+ Years Expert in
+                      <br />
                       Scalable Systems &<br />
                       Modern Architectures
                     </p>
                     <div className="mt-4 flex gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-[10px] text-muted-foreground uppercase font-bold tracking-tighter">Ready to Build</span>
+                      <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+                      <span className="text-[10px] font-bold uppercase tracking-tighter text-muted-foreground">
+                        Ready to Build
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -234,9 +238,9 @@ const HeroSection = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ ...spring, delay: 0.5 + i * 0.1 }}
-                  className={`absolute ${positions[i]} glass-card px-4 py-3 min-w-[120px]`}
+                  className={`absolute ${positions[i]} glass-card min-w-[120px] px-4 py-3`}
                 >
-                  <div className="font-bold text-lg text-foreground">{stat.value}</div>
+                  <div className="text-lg font-bold text-foreground">{stat.value}</div>
                   <div className="text-xs text-muted-foreground">{stat.label}</div>
                 </motion.div>
               );
@@ -250,11 +254,11 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
       >
-        <div className="w-px h-12 bg-gradient-to-b from-border to-transparent" />
+        <div className="h-12 w-px bg-gradient-to-b from-border to-transparent" />
         <span className="text-data text-muted-foreground">Scroll</span>
-        <ChevronDown size={14} className="text-muted-foreground animate-bounce" />
+        <ChevronDown size={14} className="animate-bounce text-muted-foreground" />
       </motion.div>
     </section>
   );
