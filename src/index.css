@@ -157,6 +157,12 @@
     transform: rotateY(180deg);
   }
 
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
   .surface-card {
     background: linear-gradient(135deg, hsl(var(--card) / 0.15), hsl(var(--card) / 0.05));
     backdrop-filter: blur(30px) saturate(200%);
@@ -165,23 +171,34 @@
     box-shadow:
       0 4px 24px -1px rgba(0, 0, 0, 0.05),
       inset 0 0 0 1px hsla(0, 0%, 100%, 0.05);
-    @apply rounded-xl transition-all duration-300;
+    @apply rounded-xl transition-all duration-500 relative;
   }
 
-  .tag-tech {
-    background-color: hsl(var(--secondary) / 0.1);
-    backdrop-filter: blur(12px) saturate(160%);
-    -webkit-backdrop-filter: blur(12px) saturate(160%);
-    border: 1px solid hsl(var(--border) / 0.1);
-    @apply px-3 py-1.5 rounded-lg text-xs font-medium text-muted-foreground transition-all duration-200;
+  .surface-card::after {
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    padding: 1.5px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--angle), transparent 70%, hsl(var(--primary)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
   }
 
-  .section-label {
-    @apply text-data text-primary mb-3 block;
+  .surface-card:hover {
+    @apply -translate-y-1;
+    border-color: transparent;
+    box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.1), 0 0 15px 0 hsl(var(--primary) / 0.15);
   }
 
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  .surface-card:hover::after {
+    opacity: 1;
+    animation: rotate-border 2s linear infinite;
   }
 
   .glass-card {
@@ -190,7 +207,34 @@
     -webkit-backdrop-filter: blur(40px) saturate(200%);
     border: 1px solid hsl(var(--border) / 0.2);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-    @apply rounded-2xl;
+    @apply rounded-2xl relative transition-all duration-500;
+  }
+
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    padding: 2px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--angle), transparent 60%, hsl(var(--primary)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+
+  .glass-card:hover::after {
+    opacity: 1;
+    animation: rotate-border 1.5s linear infinite;
+  }
+
+  @keyframes rotate-border {
+    to {
+      --angle: 360deg;
+    }
   }
 
   .glass-box {
@@ -198,7 +242,7 @@
     backdrop-filter: blur(15px) saturate(160%);
     -webkit-backdrop-filter: blur(15px) saturate(160%);
     border: 1px solid hsl(var(--border) / 0.1);
-    @apply rounded-lg p-3 transition-all duration-300;
+    @apply rounded-lg p-3 transition-all duration-300 hover:border-primary/30 hover:shadow-lg;
   }
 
   .shimmer-button {

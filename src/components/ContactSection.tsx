@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
@@ -25,6 +26,8 @@ const contactLinks = [
 ];
 
 const ContactSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="contact" className="section-padding">
       <div className="container-main">
@@ -34,11 +37,10 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
         >
-          <span className="section-label">Get In Touch</span>
-          <h2 className="section-title">Let's Work Together</h2>
+          <span className="section-label">{t("contact.label")}</span>
+          <h2 className="section-title">{t("contact.title")}</h2>
           <p className="text-body mt-4 max-w-xl">
-            I'm always open to discussing new projects, technical challenges, or opportunities
-            to be part of something impactful.
+            {t("contact.description")}
           </p>
         </motion.div>
 
@@ -85,26 +87,26 @@ const ContactSection = () => {
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Name</label>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("contact.form.name")}</label>
                   <input
                     type="text"
-                    placeholder="John Doe"
+                    placeholder={t("contact.form.placeholder.name")}
                     className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary/50 focus:ring-1 focus:ring-primary/50 outline-none transition-all text-sm"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Email</label>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("contact.form.email")}</label>
                   <input
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder={t("contact.form.placeholder.email")}
                     className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary/50 focus:ring-1 focus:ring-primary/50 outline-none transition-all text-sm"
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Message</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("contact.form.message")}</label>
                 <textarea
-                  placeholder="Tell me about your project..."
+                  placeholder={t("contact.form.placeholder.message")}
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary/50 focus:ring-1 focus:ring-primary/50 outline-none transition-all text-sm resize-none"
                 />
@@ -113,7 +115,7 @@ const ContactSection = () => {
                 type="submit"
                 className="w-full py-4 bg-primary text-primary-foreground rounded-xl font-semibold text-sm hover:brightness-110 transition-all shimmer-button"
               >
-                Send Message
+                {t("contact.form.submit")}
               </button>
             </form>
           </motion.div>
@@ -125,7 +127,7 @@ const ContactSection = () => {
             © {new Date().getFullYear()} Krishnakanth Kondoju. Built with React, TypeScript & NX
           </span>
           <span className="text-sm text-muted-foreground">
-            Seattle, WA
+            {t("contact.footer")}
           </span>
         </div>
       </div>

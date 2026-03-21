@@ -1,0 +1,231 @@
+{
+    "nav": {
+        "about": "Sobre mí",
+        "experience": "Experiencia",
+        "skills": "Habilidades",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+    },
+    "hero": {
+        "badge": "Disponible para nuevas oportunidades",
+        "greeting": "Hola, soy",
+        "role": "Desarrollador Full Stack | Líder Técnico",
+        "description": "Más de 10 años construyendo aplicaciones web de alto rendimiento con React, Node.js, TypeScript y NX, enfocado en arquitectura limpia, excelente UX y sistemas escalables.",
+        "buttons": {
+            "meeting": "Programar Reunión",
+            "resume": "Descargar CV",
+            "contact": "Contáctame"
+        }
+    },
+    "about": {
+        "label": "Sobre Mí",
+        "title": "Ingeniero apasionado, enfocado en el impacto",
+        "quote": "Construyendo el futuro de la web con precisión y pasión.",
+        "p1": "Soy un Desarrollador Full Stack con <strong class='text-foreground'>10 años de experiencia</strong> en el diseño y la construcción de aplicaciones web dinámicas. Mi experiencia abarca frameworks de JavaScript modernos como <strong class='text-foreground'>ReactJS, NextJS, NestJS y NodeJS</strong>, con un profundo conocimiento del desarrollo basado en componentes y la arquitectura escalable.",
+        "p2": "Me especializo en construir sistemas de alto rendimiento, desde interfaces de usuario responsivas y móviles hasta backends seguros listos para microservicios. Tengo una sólida trayectoria en la entrega de iniciativas de modernización a nivel empresarial y en el liderazgo de equipos técnicos hacia la excelencia en el rendimiento, la accesibilidad y la mantenibilidad.",
+        "expertise_list": [
+            "Desarrollo Full Stack (React, NestJS, Node.js)",
+            "Arquitecturas UI Modernas y Librerías de Componentes",
+            "Patrones de Diseño BFF (Backend para Frontend)",
+            "Optimización de Rendimiento y Escalabilidad",
+            "Pipelines CI/CD y Contenerización",
+            "Liderazgo Técnico y Mentoría"
+        ]
+    },
+    "experience": {
+        "label": "Historial Laboral",
+        "title": "Experiencia Profesional",
+        "jobs": [
+            {
+                "company": "Costco Wholesale - Seattle, WA",
+                "role": "Desarrollador Full Stack (Cognizant)",
+                "period": "Mayo 2025 – Actualidad",
+                "description": "Contribuyendo a una de las iniciativas de modernización empresarial más grandes de Costco: una reconstrucción desde cero de sistemas legados para mejorar la escalabilidad y la eficiencia operativa.",
+                "highlights": [
+                    "Diseñé y desarrollé servicios backend escalables usando Node.js y NestJS",
+                    "Implementé autenticación y autorización segura usando JWT y RBAC",
+                    "Construí una capa de Backend for Frontend (BFF) basada en NestJS para agregar y transformar respuestas de API",
+                    "Aproveché GitHub Copilot para acelerar el desarrollo y mejorar la calidad del código"
+                ],
+                "tags": [
+                    "ReactJS",
+                    "TypeScript",
+                    "NestJS",
+                    "NodeJS",
+                    "Zustand",
+                    "Argo CD"
+                ]
+            },
+            {
+                "company": "GuideWell Source – Jacksonville, FL",
+                "role": "Desarrollador Full Stack",
+                "period": "Nov 2020 – Mayo 2025",
+                "description": "Rediseñé módulos principales de la aplicación 'Letter Connect' y construí librerías internas de componentes React reutilizables publicadas en Artifactory.",
+                "highlights": [
+                    "Construí componentes React robustos e implementé gestión de estado escalable usando Redux y Hooks",
+                    "Migré a espacios de trabajo npm para simplificar la gestión de dependencias en Node.js v22",
+                    "Reduje los tiempos de carga de la aplicación en un 30% usando React.lazy y code-splitting",
+                    "Desacoplé los pipelines de despliegue para micro-aplicaciones, reduciendo el esfuerzo de coordinación en un 40%"
+                ],
+                "tags": [
+                    "ReactJS",
+                    "Redux",
+                    "Node.js",
+                    "Express.js",
+                    "Material UI",
+                    "Tailwind"
+                ]
+            },
+            {
+                "company": "Blue Cross and Blue Shield of Florida",
+                "role": "Desarrollador de Aplicaciones Web",
+                "period": "Ene 2018 - Nov 2020",
+                "description": "Desarrollé páginas web dinámicas y responsivas y componentes de UI reutilizables usando ReactJS y Material UI.",
+                "highlights": [
+                    "Migré bases de código JavaScript legadas a TypeScript para una mejor mantenibilidad",
+                    "Construí servicios RESTful escalables usando Node.js, Express.js y MongoDB",
+                    "Reduje la duplicación de código en un 25% mediante componentes React modulares y reutilizables",
+                    "Optimicé el rendimiento del backend mediante estrategias de caché y consultas a bases de datos eficientes"
+                ],
+                "tags": [
+                    "ReactJS",
+                    "TypeScript",
+                    "Node.js",
+                    "MongoDB",
+                    "Material UI",
+                    "SASS"
+                ]
+            },
+            {
+                "company": "New Jersey Immunization System",
+                "role": "Desarrollador de UI",
+                "period": "Ene 2017 - Dic 2017",
+                "description": "Diseñé casos de uso y desarrollé documentos de requisitos técnicos para aplicaciones web de inmunización.",
+                "highlights": [
+                    "Desarrollé SPA usando Angular 2, Bootstrap 3 y SASS con diseño móvil primero",
+                    "Implementé Angular Router para una navegación fluida a través de las tareas de la aplicación",
+                    "Aseguré el cumplimiento de los estándares de accesibilidad para lectores de pantalla (WCAG)",
+                    "Utilicé Local Storage e IndexedDB para la persistencia de datos en el lado del cliente"
+                ],
+                "tags": [
+                    "Angular 2",
+                    "TypeScript",
+                    "Bootstrap 3",
+                    "SASS",
+                    "RxJS",
+                    "IndexedDB"
+                ]
+            }
+        ]
+    },
+    "skills": {
+        "label": "Lo que Sé",
+        "title": "Habilidades Técnicas",
+        "description": "Una amplia caja de herramientas en todo el stack, desde frameworks modernos de frontend hasta infraestructura en la nube.",
+        "groups": [
+            {
+                "title": "Tecnologías Web"
+            },
+            {
+                "title": "Frameworks y Runtimes"
+            },
+            {
+                "title": "Bases de Datos"
+            },
+            {
+                "title": "Herramientas y DevOps"
+            },
+            {
+                "title": "Pruebas y Depuración"
+            },
+            {
+                "title": "Otros"
+            }
+        ]
+    },
+    "projects": {
+        "label": "Mi Trabajo",
+        "title": "Proyectos Destacados",
+        "description": "Una selección de proyectos impactantes que abarcan empresas, fintech, salud y comercio electrónico.",
+        "list": [
+            {
+                "emoji": "📦",
+                "period": "2025-Presente",
+                "title": "Aplicaciones para Vendedores de Costco",
+                "company": "Costco Wholesale",
+                "description": "Desarrollé y mejoré aplicaciones de negocios de alto impacto para la gestión de vendedores y mensajería de servicios de entrega.",
+                "tags": [
+                    "ReactJS",
+                    "TypeScript",
+                    "NestJS",
+                    "NodeJS",
+                    "Zustand",
+                    "Argo CD"
+                ]
+            },
+            {
+                "emoji": "✉️",
+                "period": "2020-2025",
+                "title": "Aplicación Letter Connect",
+                "company": "GuideWell Source",
+                "description": "Rediseñé módulos principales usando Material-UI y Redux, mejorando la mantenibilidad y modularidad del sistema de generación de cartas.",
+                "tags": [
+                    "ReactJS",
+                    "Redux",
+                    "Material-UI",
+                    "Styled-Components",
+                    "TypeScript"
+                ]
+            },
+            {
+                "emoji": "🛠️",
+                "period": "En curso",
+                "title": "UI Webkit",
+                "company": "Proyecto Personal",
+                "description": "Una librería completa de componentes de UI reutilizables y utilidades para el desarrollo web moderno.",
+                "tags": [
+                    "React",
+                    "Storybook",
+                    "Tailwind",
+                    "Design System"
+                ]
+            },
+            {
+                "emoji": "💉",
+                "period": "2017",
+                "title": "Sistema de Inmunización de Jersey",
+                "company": "Estado de Nueva Jersey",
+                "description": "Desarrollé una aplicación de una sola página para gestionar registros de inmunización con altos estándares de accesibilidad.",
+                "tags": [
+                    "Angular 2",
+                    "Bootstrap 3",
+                    "SASS",
+                    "RxJS",
+                    "WCAG"
+                ]
+            }
+        ]
+    },
+    "notfound": {
+        "title": "404",
+        "message": "¡Ups! Página no encontrada",
+        "return": "Volver al Inicio"
+    },
+    "contact": {
+        "label": "Ponerse en Contacto",
+        "title": "Trabajemos Juntos",
+        "description": "Siempre estoy abierto a discutir nuevos proyectos, desafíos técnicos u oportunidades para ser parte de algo impactante.",
+        "form": {
+            "name": "Nombre",
+            "email": "Correo electrónico",
+            "message": "Mensaje",
+            "placeholder": {
+                "name": "Juan Pérez",
+                "email": "juan@ejemplo.com",
+                "message": "Cuéntame sobre tu proyecto..."
+            },
+            "submit": "Enviar Mensaje"
+        },
+        "footer": "Seattle, WA"
+    }
+}

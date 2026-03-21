@@ -2,19 +2,23 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
-
-const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
+import { LanguageToggle } from "./LanguageToggle";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { scrollYProgress } = useScroll();
+
+  const navItems = [
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.experience"), href: "#experience" },
+    { label: t("nav.skills"), href: "#skills" },
+    { label: t("nav.projects"), href: "#projects" },
+    { label: t("nav.contact"), href: "#contact" },
+  ];
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -49,23 +53,30 @@ const Navbar = () => {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                {item.label}
-              </a>
-            ))}
-            <ThemeToggle />
+            <div className="flex items-center gap-6">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+            <div className="h-4 w-[1px] bg-border mx-2" />
+            <div className="flex items-center gap-2">
+              <LanguageToggle />
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile toggle */}
-          <div className="flex items-center gap-4 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
+            <LanguageToggle />
             <ThemeToggle />
             <button
-              className="text-foreground"
+              className="text-foreground ml-2 p-2 rounded-lg hover:bg-secondary transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}

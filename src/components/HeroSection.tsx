@@ -1,5 +1,8 @@
 import { motion, useMotionValue, useSpring as useFramerSpring } from "framer-motion";
-import { Mail, Linkedin, Github, ChevronDown, FileDown } from "lucide-react";
+import { Mail, Linkedin, Github, ChevronDown, FileDown, Calendar } from "lucide-react";
+import { useState } from "react";
+import { PopupModal } from "react-calendly";
+import { useTranslation } from "react-i18next";
 
 const stats = [
   { value: "10+", label: "Years Exp" },
@@ -11,6 +14,9 @@ const stats = [
 const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+
   // Magnetic button logic
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -38,7 +44,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-[100px] animate-pulse-glow pointer-events-none" />
 
-      <div className="container-main w-full relative z-10 pt-20 pb-12">
+      <div className="container-main w-full relative z-10 pt-32 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left content */}
           <div>
@@ -49,7 +55,7 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse-glow" />
-              <span className="text-sm text-muted-foreground">Available for new opportunities</span>
+              <span className="text-sm text-muted-foreground">{t("hero.badge")}</span>
             </motion.div>
 
             <motion.h1
@@ -58,7 +64,7 @@ const HeroSection = () => {
               transition={{ ...spring, delay: 0.2 }}
               className="text-display"
             >
-              Hey, I'm{" "}
+              {t("hero.greeting")}{" "}
               <span className="text-primary block">Krishna Kondoju</span>
             </motion.h1>
 
@@ -68,7 +74,7 @@ const HeroSection = () => {
               transition={{ ...spring, delay: 0.35 }}
               className="text-xl md:text-2xl font-semibold text-primary/80 mt-4"
             >
-              Full Stack Developer | Tech Lead
+              {t("hero.role")}
             </motion.p>
 
             <motion.p
@@ -77,8 +83,7 @@ const HeroSection = () => {
               transition={{ ...spring, delay: 0.45 }}
               className="text-body mt-4 max-w-lg"
             >
-              10+ years building high-performance web applications with React, Node.js,
-              TypeScript, and NX — focused on clean architecture, great UX, and scalable systems.
+              {t("hero.description")}
             </motion.p>
 
             <motion.div
@@ -90,21 +95,21 @@ const HeroSection = () => {
               <motion.div
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                style={{ x: dx, y: dy }}
+              // style={{ x: dx, y: dy }}
               >
-                <a
-                  href="#contact"
+                <button
+                  onClick={() => setIsOpen(true)}
                   className="px-7 py-4 bg-primary text-primary-foreground rounded-xl font-bold text-sm hover:brightness-110 shadow-lg shadow-primary/25 transition-all flex items-center gap-2 group"
                 >
-                  Contact Me
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </a>
+                  <Calendar size={18} />
+                  {t("hero.buttons.meeting")}
+                </button>
               </motion.div>
 
               <motion.div
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                style={{ x: dx, y: dy }}
+              // style={{ x: dx, y: dy }}
               >
                 <a
                   href="/resume.pdf"
@@ -112,10 +117,33 @@ const HeroSection = () => {
                   className="px-7 py-4 border border-border/50 bg-card/30 backdrop-blur-md rounded-xl font-bold text-sm text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all flex items-center gap-2"
                 >
                   <FileDown size={18} />
-                  Download Resume
+                  {t("hero.buttons.resume")}
+                </a>
+              </motion.div>
+
+              <motion.div
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                // style={{ x: dx, y: dy }}
+                className="flex items-center"
+              >
+                <a
+                  href="#contact"
+                  className="px-6 py-2 font-medium text-sm text-muted-foreground hover:text-primary transition-all flex items-center gap-2 group"
+                >
+                  {t("hero.buttons.contact")}
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </a>
               </motion.div>
             </motion.div>
+
+            {/* Calendly Popup */}
+            <PopupModal
+              url="https://calendly.com/krishnakanth"
+              onModalClose={() => setIsOpen(false)}
+              open={isOpen}
+              rootElement={document.getElementById("root")!}
+            />
 
             <motion.div
               initial={{ opacity: 0 }}

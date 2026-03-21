@@ -1,43 +1,31 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { Layout, Database, Terminal, Settings2, ShieldCheck, Globe } from "lucide-react";
 
-import { Code2, Layout, Database, Terminal, Settings2, ShieldCheck, Globe } from "lucide-react";
+const icons = [Globe, Layout, Database, Terminal, ShieldCheck, Settings2];
 
-const skillGroups = [
-  {
-    title: "Web Technologies",
-    icon: Globe,
-    skills: ["ReactJS", "NextJS", "Astro JS", "TypeScript", "JavaScript", "HTML5", "CSS3", "Zustand", "GraphQL", "RESTful APIs"],
-  },
-  {
-    title: "Frameworks & Runtimes",
-    icon: Layout,
-    skills: ["NodeJS", "NestJS", "Express.js", "AngularJS", "Bootstrap", "Tailwind CSS", "jQuery", "D3JS", "SASS", "LESS"],
-  },
-  {
-    title: "Databases",
-    icon: Database,
-    skills: ["MongoDB", "MySQL", "PostgreSQL", "SQL Server", "Redis"],
-  },
-  {
-    title: "Tools & DevOps",
-    icon: Terminal,
-    skills: ["Git", "GitLab", "Argo CD", "Jenkins", "Helm Charts", "OpenShift", "GitHub Actions", "NX Monorepo"],
-  },
-  {
-    title: "Testing & Debugging",
-    icon: ShieldCheck,
-    skills: ["Jest", "Enzyme", "React Testing Library", "Jasmine", "Karma", "Playwright", "Chrome Inspector"],
-  },
-  {
-    title: "Other",
-    icon: Settings2,
-    skills: ["WebSphere", "JBoss", "Apache Tomcat", "Splunk", "Jira", "Agile/Scrum"],
-  },
+// Skills don't need translation as they are technical terms
+const skillLists = [
+  ["ReactJS", "NextJS", "Astro JS", "TypeScript", "JavaScript", "HTML5", "CSS3", "Zustand", "GraphQL", "RESTful APIs"],
+  ["NodeJS", "NestJS", "Express.js", "AngularJS", "Bootstrap", "Tailwind CSS", "jQuery", "D3JS", "SASS", "LESS"],
+  ["MongoDB", "MySQL", "PostgreSQL", "SQL Server", "Redis"],
+  ["Git", "GitLab", "Argo CD", "Jenkins", "Helm Charts", "OpenShift", "GitHub Actions", "NX Monorepo"],
+  ["Jest", "Enzyme", "React Testing Library", "Jasmine", "Karma", "Playwright", "Chrome Inspector"],
+  ["WebSphere", "JBoss", "Apache Tomcat", "Splunk", "Jira", "Agile/Scrum"],
 ];
 
 const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
 const SkillsSection = () => {
+  const { t } = useTranslation();
+  const groups = t("skills.groups", { returnObjects: true }) as { title: string }[];
+
+  const skillGroups = groups.map((group, i) => ({
+    ...group,
+    icon: icons[i],
+    skills: skillLists[i],
+  }));
+
   return (
     <section id="skills" className="section-padding">
       <div className="container-main">
@@ -47,17 +35,17 @@ const SkillsSection = () => {
           viewport={{ once: true }}
           transition={spring}
         >
-          <span className="section-label">What I Know</span>
-          <h2 className="section-title">Technical Skills</h2>
+          <span className="section-label">{t("skills.label")}</span>
+          <h2 className="section-title">{t("skills.title")}</h2>
           <p className="text-body mt-4 max-w-xl">
-            A broad toolkit across the full stack, from modern frontend frameworks to cloud infrastructure.
+            {t("skills.description")}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
           {skillGroups.map((group, i) => (
             <motion.div
-              key={group.title}
+              key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

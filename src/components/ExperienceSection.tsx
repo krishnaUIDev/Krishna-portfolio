@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 interface Experience {
   company: string;
@@ -9,68 +10,12 @@ interface Experience {
   tags: string[];
 }
 
-const experiences: Experience[] = [
-  {
-    company: "Costco Wholesale - Seattle, WA",
-    role: "Full Stack Developer (Cognizant)",
-    period: "May 2025 – Till Now",
-    description:
-      "Contributing to one of Costco’s largest enterprise modernization initiatives—a ground-up rebuild of legacy systems to improve scalability and operational efficiency.",
-    highlights: [
-      "Designed and developed scalable backend services using Node.js and NestJS",
-      "Implemented secure authentication and authorization using JWT and RBAC",
-      "Built a NestJS-based Backend for Frontend (BFF) layer toaggregate and transform API responses",
-      "Leveraged GitHub Copilot to accelerate development and improve code quality",
-    ],
-    tags: ["ReactJS", "TypeScript", "NestJS", "NodeJS", "Zustand", "Argo CD"],
-  },
-  {
-    company: "GuideWell Source – Jacksonville, FL",
-    role: "Full Stack Developer",
-    period: "Nov 2020 – May 2025",
-    description:
-      "Redesigned core modules of the 'Letter Connect App' and built internal libraries of reusable React components published to Artifactory.",
-    highlights: [
-      "Built robust React components and implemented scalable state management using Redux and Hooks",
-      "Migrated to npm workspaces for simplified dependency management in Node.js v22",
-      "Reduced application load times by 30% using React.lazy and code-splitting",
-      "Decoupled deployment pipelines for micro-apps, reducing coordination effort by 40%",
-    ],
-    tags: ["ReactJS", "Redux", "Node.js", "Express.js", "Material UI", "Tailwind"],
-  },
-  {
-    company: "Blue Cross and Blue Shield of Florida",
-    role: "Web Application Developer",
-    period: "Jan 2018- Nov 2020",
-    description:
-      "Developed dynamic, responsive web pages and reusable UI components using ReactJS and Material UI.",
-    highlights: [
-      "Migrated legacy JavaScript codebases to TypeScript for better maintainability",
-      "Built scalable RESTful services using Node.js, Express.js, and MongoDB",
-      "Reduced code duplication by 25% through modular and reusable React components",
-      "Optimized backend performance through caching strategies and efficient database queries",
-    ],
-    tags: ["ReactJS", "TypeScript", "Node.js", "MongoDB", "Material UI", "SASS"],
-  },
-  {
-    company: "New Jersey Immunization System",
-    role: "UI Developer",
-    period: "Jan 2017 - Dec 2017",
-    description:
-      "Designed use cases and developed technical requirement documents for immunization web applications.",
-    highlights: [
-      "Developed SPA using Angular 2, Bootstrap 3, and SASS with mobile-first design",
-      "Implemented Angular Router for seamless navigation across application tasks",
-      "Ensured accessibility standards compliance for screen readers (WCAG)",
-      "Used Local Storage and IndexedDB for client-side data persistence",
-    ],
-    tags: ["Angular 2", "TypeScript", "Bootstrap 3", "SASS", "RxJS", "IndexedDB"],
-  },
-];
-
 const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
 const ExperienceSection = () => {
+  const { t } = useTranslation();
+  const experiences = t("experience.jobs", { returnObjects: true }) as Experience[];
+
   return (
     <section id="experience" className="section-padding">
       <div className="container-main">
@@ -80,8 +25,8 @@ const ExperienceSection = () => {
           viewport={{ once: true }}
           transition={spring}
         >
-          <span className="section-label">Work History</span>
-          <h2 className="section-title">Professional Experience</h2>
+          <span className="section-label">{t("experience.label")}</span>
+          <h2 className="section-title">{t("experience.title")}</h2>
         </motion.div>
 
         <div className="mt-12 relative">
@@ -115,8 +60,8 @@ const ExperienceSection = () => {
                   <p className="text-body max-w-2xl">{exp.description}</p>
 
                   <ul className="mt-4 space-y-2">
-                    {exp.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    {exp.highlights.map((h, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
                         <span className="text-primary mt-1">●</span>
                         {h}
                       </li>
