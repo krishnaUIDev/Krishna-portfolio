@@ -2,19 +2,22 @@
 
 A premium, high-performance personal portfolio built with a focus on modern aesthetic, smooth interactivity, and scalable architecture.
 
-## ✨ Features
+## ✨ Premium Features
 
+- **"Krishna AI" Assistant**: Secure Gemini-powered AI chatbot integration using **Vercel Serverless Functions** for private, context-aware professional assistance.
+- **Multi-language Support (i18n)**: Fully localized experience with seamless switching between English and Spanish.
 - **iOS-Style Glassmorphism**: High-blur, high-saturation "frosted glass" interface for a premium Apple-inspired feel.
 - **3D Interactive Avatar**: A unique "flip-card" profile picture that reveals professional credentials on hover.
-- **Dynamic Backdrop**: Animated, vibrant background "glow blobs" that create rich refraction through glass surfaces.
+- **Calendly Integration**: Integrated "Book a Meeting" functionality for direct scheduling.
 - **Magnetic Interactivity**: High-end physics-based hover effects on primary call-to-action buttons.
-- **User-Centric Navigation**: Fixed glass navbar with an integrated scroll progress tracker.
-- **SEO Optimized**: Fully configured with OpenGraph and Twitter cards for professional social sharing.
-- **Fully Responsive**: Optimized for every screen size, from mobile to ultra-wide desktops.
+- **Dynamic Backdrop**: Animated, vibrant background "glow blobs" that create rich refraction through glass surfaces.
 
 ## 🚀 Tech Stack
 
 - **Core**: [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- **AI**: [Google Gemini Pro SDK](https://ai.google.dev/)
+- **Backend**: [Vercel Serverless Functions](https://vercel.com/docs/functions)
+- **i18n**: [i18next](https://www.i18next.com/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Icons**: [Lucide React](https://lucide.dev/)
@@ -35,9 +38,20 @@ Follow these steps to get the project running on your local machine:
    npm install
    ```
 
-3. **Start the dev server**:
+3. **Configure Environment Variables**:
+   Create a `.env` file based on `.env.example`:
+   ```bash
+   GEMINI_API_KEY=your_key_here
+   ```
+
+4. **Start the dev server**:
+   For standard frontend development:
    ```bash
    npm run dev
+   ```
+   To test AI serverless functions locally (requires Vercel CLI):
+   ```bash
+   npm run vercel-dev
    ```
 
 ## 📬 Contact
