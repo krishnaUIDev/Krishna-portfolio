@@ -4,20 +4,33 @@ import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import { useTranslation } from "react-i18next";
+import { UserButton, SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
+
+import { useLocation, Link } from "react-router-dom";
 
 const Navbar = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { scrollYProgress } = useScroll();
 
+  const getHref = (href: string) => {
+    if (href.startsWith("#")) {
+      return isHomePage ? href : `/${href}`;
+    }
+    return href;
+  };
+
   const navItems = [
-    { label: t("nav.about"), href: "#about" },
-    { label: t("nav.experience"), href: "#experience" },
-    { label: t("nav.skills"), href: "#skills" },
-    { label: t("nav.projects"), href: "#projects" },
-    { label: t("nav.blog"), href: "#blog" },
-    { label: t("nav.contact"), href: "#contact" },
+    { label: t("nav.about"), href: getHref("#about") },
+    { label: t("nav.experience"), href: getHref("#experience") },
+    { label: t("nav.skills"), href: getHref("#skills") },
+    { label: t("nav.projects"), href: getHref("#projects") },
+    { label: t("nav.blog"), href: getHref("#blog") },
+    { label: t("nav.store"), href: "/store" },
+    { label: t("nav.contact"), href: getHref("#contact") },
   ];
 
   const scaleX = useSpring(scrollYProgress, {
@@ -72,6 +85,17 @@ const Navbar = () => {
             <div className="flex items-center gap-2">
               <LanguageToggle />
               <ThemeToggle />
+              <div className="mx-1 h-4 w-[1px] bg-border" />
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="rounded-lg bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/20">
+                    Sign In
+                  </button>
+                </SignInButton>
+              </SignedOut>
             </div>
           </div>
 
@@ -109,6 +133,24 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
+
+              <div className="mt-4 flex items-center gap-4 border-t border-border pt-6">
+                <SignedIn>
+                  <div className="flex items-center gap-4">
+                    <UserButton afterSignOutUrl="/" />
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {t("nav.profile")}
+                    </span>
+                  </div>
+                </SignedIn>
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <button className="w-full rounded-xl bg-primary py-4 text-lg font-bold text-white">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+              </div>
             </div>
           </motion.div>
         )}
