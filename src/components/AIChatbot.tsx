@@ -83,8 +83,20 @@ const AIChatbot = () => {
                 })
             });
 
+            if (response.status === 404) {
+                throw new Error(i18n.language === "es"
+                    ? "Error 404: El backend no está ejecutándose localmente. Por favor, usa 'vercel dev' para probar las funciones de servidor."
+                    : "Error 404: The backend is not running locally. Please use 'npx vercel dev' to test serverless functions.");
+            }
+
             if (!response.ok) {
-                const errorData = await response.json();
+                const text = await response.text();
+                let errorData;
+                try {
+                    errorData = JSON.parse(text);
+                } catch {
+                    errorData = { error: text || 'Failed to fetch AI response' };
+                }
                 throw new Error(errorData.error || 'Failed to fetch AI response');
             }
 
@@ -96,7 +108,9 @@ const AIChatbot = () => {
                 ? "Lo siento, tuve un problema al procesar eso. Por favor, intenta de nuevo."
                 : "Sorry, I ran into an issue processing that. Please try again.";
 
-            if (error.message?.includes("API Key")) {
+            if (error.message?.includes("404")) {
+                errorMessage = error.message;
+            } else if (error.message?.includes("API Key")) {
                 errorMessage = i18n.language === "es"
                     ? "⚠️ API Key no configurada en el servidor. Por favor, revisa tus variables de entorno en Vercel."
                     : "⚠️ API Key not configured on server. Please check your environment variables in Vercel.";
