@@ -3,6 +3,7 @@ import { Mail, Linkedin, Github, ChevronDown, FileDown, Calendar } from "lucide-
 import { useState } from "react";
 import { PopupModal } from "react-calendly";
 import { useTranslation } from "react-i18next";
+import GridBackground from "./GridBackground";
 
 const stats = [
   { value: "10+", label: "Years Exp" },
@@ -42,6 +43,7 @@ const HeroSection = () => {
     <section className="relative flex min-h-screen items-center overflow-hidden">
       {/* Subtle gradient background and blobs */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
+      <GridBackground />
       <div className="pointer-events-none absolute left-1/4 top-1/4 h-64 w-64 animate-pulse-glow rounded-full bg-primary/20 blur-[100px]" />
 
       <div className="container-main relative z-10 w-full pb-12 pt-20">
@@ -94,7 +96,7 @@ const HeroSection = () => {
               <motion.div
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                // style={{ x: dx, y: dy }}
+              // style={{ x: dx, y: dy }}
               >
                 <button
                   onClick={() => setIsOpen(true)}
@@ -108,7 +110,7 @@ const HeroSection = () => {
               <motion.div
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                // style={{ x: dx, y: dy }}
+              // style={{ x: dx, y: dy }}
               >
                 <a
                   href="/resume.pdf"
@@ -250,16 +252,17 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <motion.a
+        href="#about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+        className="absolute bottom-12 left-1/2 z-20 flex -translate-x-1/2 cursor-pointer flex-col items-center gap-2 transition-transform hover:translate-y-1"
       >
         <div className="h-12 w-px bg-gradient-to-b from-border to-transparent" />
-        <span className="text-data text-muted-foreground">Scroll</span>
+        <span className="text-data text-muted-foreground uppercase tracking-widest text-[10px] font-bold">Scroll</span>
         <ChevronDown size={14} className="animate-bounce text-muted-foreground" />
-      </motion.div>
+      </motion.a>
     </section>
   );
 };
