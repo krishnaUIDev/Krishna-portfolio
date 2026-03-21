@@ -5,7 +5,7 @@ A premium, high-performance personal portfolio built with a focus on modern aest
 ## ✨ Premium Features
 
 - **"Krishna AI" Assistant**: Secure Gemini-powered AI chatbot integration using **Vercel Serverless Functions** for private, context-aware professional assistance.
-- **Interactive Contact Form**: Custom serverless backend integrated with **Resend** for reliable inbox delivery.
+- **Interactive Contact Form**: Custom serverless backend integrated with **Supabase (Postgres)** for data persistence.
 - **Clerk Authentication**: Advanced user identity and session management for protected portfolio areas.
 - **PWA Support**: Progressive Web App capabilities for offline access and a native-like experience.
 - **Multi-language Support (i18n)**: Fully localized experience with seamless switching between English and Spanish.
@@ -18,7 +18,7 @@ A premium, high-performance personal portfolio built with a focus on modern aest
 - **Auth**: [Clerk](https://clerk.com/)
 - **AI**: [Google Gemini Flash](https://ai.google.dev/)
 - **Backend**: [Vercel Serverless Functions](https://vercel.com/docs/functions)
-- **Email**: [Resend](https://resend.com/)
+- **Database**: [Supabase/PostgreSQL](https://supabase.com/)
 - **i18n**: [i18next](https://www.i18next.com/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
@@ -45,9 +45,11 @@ Follow these steps to get the project running on your local machine:
    Create a `.env` file based on `.env.example`:
 
    ```env
-   CLERK_PUBLISHABLE_KEY=pk_test_...
+   # Rename to .env and add your keys
+   VITE_CLERK_PUBLISHABLE_KEY=pk_test_...
    GEMINI_API_KEY=your_key_here
-   RESEND_API_KEY=re_...
+   SUPABASE_URL=https://...supabase.co
+   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
    ```
 
 4. **Start the dev server**:

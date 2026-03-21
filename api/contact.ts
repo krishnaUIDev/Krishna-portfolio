@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { createClient } from "@supabase/supabase-js";
 
 export const config = {
     runtime: "edge",
@@ -16,34 +16,29 @@ export default async function handler(req: Request) {
             return new Response(JSON.stringify({ error: "Missing required fields" }), { status: 400 });
         }
 
-        const apiKey = process.env.RESEND_API_KEY;
-        if (!apiKey) {
-            return new Response(JSON.stringify({ error: "Email service not configured" }), {
-                status: 500,
-            });
+        const supabaseUrl = process.env.SUPABASE_URL;
+        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+        if (!supabaseUrl || !supabaseKey) {
+            return new Response(
+                JSON.stringify({ error: "Supabase configuration missing on server" }),
+                { status: 500 }
+            );
         }
 
-        const resend = new Resend(apiKey);
+        const supabase = createClient(supabaseUrl, supabaseKey);
 
-        const { data, error } = await resend.emails.send({
-            from: "Portfolio <onboarding@resend.dev>",
-            to: ["hello@example.com"], // Fallback address or user's email if configured
-            subject: `New Portfolio Message from ${name}`,
-            html: `
-        <h2>New Message from your Portfolio</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-        });
+        const { data, error } = await supabase
+            .from("contact_submissions")
+            .insert([{ name, email, message }])
+            .select();
 
         if (error) {
-            console.error("Resend Error:", error);
+            console.error("Supabase Error:", error);
             return new Response(JSON.stringify({ error: error.message }), { status: 500 });
         }
 
-        return new Response(JSON.stringify({ success: true, id: data?.id }), {
+        return new Response(JSON.stringify({ success: true, data }), {
             status: 200,
             headers: { "Content-Type": "application/json" },
         });
