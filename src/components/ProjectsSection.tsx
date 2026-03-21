@@ -14,7 +14,10 @@ const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
 const ProjectsSection = () => {
   const { t } = useTranslation();
-  const projects = t("projects.list", { returnObjects: true }) as Project[];
+  const list = t("projects.list", { returnObjects: true });
+
+  // Safety check to ensure list is an array
+  const projects = Array.isArray(list) ? list : [];
 
   return (
     <section id="projects" className="section-padding">

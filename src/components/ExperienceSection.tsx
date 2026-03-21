@@ -14,7 +14,10 @@ const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
 const ExperienceSection = () => {
   const { t } = useTranslation();
-  const experiences = t("experience.jobs", { returnObjects: true }) as Experience[];
+  const jobs = t("experience.jobs", { returnObjects: true });
+
+  // Safety check to ensure jobs is an array
+  const experiences = Array.isArray(jobs) ? jobs : [];
 
   return (
     <section id="experience" className="section-padding">

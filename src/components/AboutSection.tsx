@@ -3,7 +3,10 @@ import { useTranslation, Trans } from "react-i18next";
 
 const AboutSection = () => {
   const { t } = useTranslation();
-  const expertiseList = t("about.expertise_list", { returnObjects: true }) as string[];
+  const list = t("about.expertise_list", { returnObjects: true });
+
+  // Safety check to ensure list is an array
+  const expertiseList = Array.isArray(list) ? list : [];
 
   return (
     <section id="about" className="section-padding">
