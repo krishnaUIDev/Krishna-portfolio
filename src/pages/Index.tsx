@@ -5,6 +5,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
+import AIChatbot from "@/components/AIChatbot";
 
 const Index = () => {
   return (
@@ -22,6 +23,9 @@ const Index = () => {
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />
+
+      {/* AI Assistant */}
+      <AIChatbot />
     </div>
   );
 };
