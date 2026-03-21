@@ -49,7 +49,7 @@ Follow these steps to get the project running on your local machine:
    VITE_CLERK_PUBLISHABLE_KEY=pk_test_...
    GEMINI_API_KEY=your_key_here
    SUPABASE_URL=https://...supabase.co
-   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+   SUPABASE_ANON_KEY=your_anon_key_here
    ```
 
 4. **Start the dev server**:
@@ -61,6 +61,10 @@ Follow these steps to get the project running on your local machine:
    ```bash
    npm run vercel-dev
    ```
+
+ ## 🚀 Deployment Next Steps
+1. **Supabase Credentials**: Add `SUPABASE_URL` and `SUPABASE_ANON_KEY` to your Vercel/Local env.
+2. **Local Testing**: Run `npm run vercel-dev` to test the database insertion locally.
 
 ## 📬 Contact
 
