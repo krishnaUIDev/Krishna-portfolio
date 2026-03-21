@@ -2,8 +2,6 @@
 
 A premium, high-performance personal portfolio built with a focus on modern aesthetic, smooth interactivity, and scalable architecture.
 
-![Portfolio Preview](/public/avatar.png)
-
 ## ✨ Features
 
 - **iOS-Style Glassmorphism**: High-blur, high-saturation "frosted glass" interface for a premium Apple-inspired feel.
