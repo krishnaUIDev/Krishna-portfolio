@@ -245,6 +245,10 @@
     @apply rounded-lg p-3 transition-all duration-300 hover:border-primary/30 hover:shadow-lg;
   }
 
+  .tag-tech {
+    @apply px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-bold uppercase tracking-wider text-primary/80 transition-all duration-300;
+  }
+
   .shimmer-button {
     @apply relative overflow-hidden;
   }

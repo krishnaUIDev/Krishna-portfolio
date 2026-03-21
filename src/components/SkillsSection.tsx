@@ -18,9 +18,12 @@ const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
 const SkillsSection = () => {
   const { t } = useTranslation();
-  const groups = t("skills.groups", { returnObjects: true }) as { title: string }[];
+  const groups = t("skills.groups", { returnObjects: true });
 
-  const skillGroups = groups.map((group, i) => ({
+  // Safety check to ensure groups is an array
+  const safeGroups = Array.isArray(groups) ? groups : [];
+
+  const skillGroups = safeGroups.map((group, i) => ({
     ...group,
     icon: icons[i],
     skills: skillLists[i],
