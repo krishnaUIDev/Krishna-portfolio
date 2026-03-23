@@ -179,7 +179,7 @@ const HeroSection = () => {
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                       <span className="text-2xl font-bold text-primary">K</span>
                     </div>
-                    <h3 className="text-lg font-bold text-foreground">Krishnakanth</h3>
+                    <p className="text-lg font-bold text-foreground">Krishnakanth</p>
                     <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-primary/80">
                       Tech Lead
                     </p>
