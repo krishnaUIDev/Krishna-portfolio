@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
+import { useQuery } from "@tanstack/react-query";
+
 interface Experience {
   company: string;
   role: string;
@@ -8,16 +10,22 @@ interface Experience {
   description: string;
   highlights: string[];
   tags: string[];
+  rank: number;
 }
 
 const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
 const ExperienceSection = () => {
   const { t } = useTranslation();
-  const jobs = t("experience.jobs", { returnObjects: true });
 
-  // Safety check to ensure jobs is an array
-  const experiences = Array.isArray(jobs) ? jobs : [];
+  const { data: experiences, isLoading, error } = useQuery<Experience[]>({
+    queryKey: ["experiences"],
+    queryFn: async () => {
+      const res = await fetch("/api/experience");
+      if (!res.ok) throw new Error("Failed to fetch experiences");
+      return res.json();
+    },
+  });
 
   return (
     <section id="experience" className="section-padding">
@@ -37,9 +45,18 @@ const ExperienceSection = () => {
           <div className="absolute bottom-0 left-0 top-0 w-px bg-border md:left-8" />
 
           <div className="space-y-0">
-            {experiences.map((exp, i) => (
+            {isLoading ? (
+              <div className="py-20 text-center">
+                <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+                <p className="mt-4 text-sm text-muted-foreground">Loading career history...</p>
+              </div>
+            ) : error ? (
+              <div className="py-20 text-center text-red-500">
+                <p>Failed to load experience data.</p>
+              </div>
+            ) : experiences?.map((exp, i) => (
               <motion.div
-                key={exp.company}
+                key={exp.company + i}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -63,7 +80,7 @@ const ExperienceSection = () => {
                   <p className="text-body max-w-2xl">{exp.description}</p>
 
                   <ul className="mt-4 space-y-2">
-                    {exp.highlights.map((h, idx) => (
+                    {exp.highlights?.map((h, idx) => (
                       <li
                         key={idx}
                         className="flex items-start gap-2 text-sm text-muted-foreground"
@@ -75,7 +92,7 @@ const ExperienceSection = () => {
                   </ul>
 
                   <div className="mt-6 flex flex-wrap gap-2">
-                    {exp.tags.map((tag) => (
+                    {exp.tags?.map((tag) => (
                       <span key={tag} className="tag-tech">
                         {tag}
                       </span>
