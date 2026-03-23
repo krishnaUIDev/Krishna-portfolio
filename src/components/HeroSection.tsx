@@ -1,9 +1,10 @@
-import { motion, useMotionValue, useSpring as useFramerSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, ChevronDown, FileDown, Calendar } from "lucide-react";
 import { useState } from "react";
 import { PopupModal } from "react-calendly";
 import { useTranslation } from "react-i18next";
 import GridBackground from "./GridBackground";
+import { Magnetic } from "./ui/Magnetic";
 
 const stats = [
   { value: "10+", label: "Years Exp" },
@@ -17,27 +18,6 @@ const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 const HeroSection = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-
-  // Magnetic button logic
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 20, stiffness: 150 };
-  const dx = useFramerSpring(mouseX, springConfig);
-  const dy = useFramerSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    mouseX.set(x * 0.3);
-    mouseY.set(y * 0.3);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">
@@ -90,28 +70,21 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ ...spring, delay: 0.55 }}
-              className="mt-8 flex flex-wrap gap-4"
+              transition={{ ...spring, delay: 0.5 }}
+              className="mt-10 flex flex-wrap items-center gap-6"
             >
-              <motion.div
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-              // style={{ x: dx, y: dy }}
-              >
+              <Magnetic strength={0.4}>
                 <button
                   onClick={() => setIsOpen(true)}
-                  className="group flex items-center gap-2 rounded-xl bg-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:brightness-110"
+                  className="group relative flex items-center gap-2 overflow-hidden rounded-xl bg-primary px-8 py-4 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Calendar size={18} />
                   {t("hero.buttons.meeting")}
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                 </button>
-              </motion.div>
+              </Magnetic>
 
-              <motion.div
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-              // style={{ x: dx, y: dy }}
-              >
+              <Magnetic strength={0.3}>
                 <a
                   href="/resume.pdf"
                   download
@@ -120,14 +93,9 @@ const HeroSection = () => {
                   <FileDown size={18} />
                   {t("hero.buttons.resume")}
                 </a>
-              </motion.div>
+              </Magnetic>
 
-              <motion.div
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                // style={{ x: dx, y: dy }}
-                className="flex items-center"
-              >
+              <Magnetic strength={0.2}>
                 <a
                   href="#contact"
                   className="group flex items-center gap-2 px-6 py-2 text-sm font-medium text-muted-foreground transition-all hover:text-primary"
@@ -135,7 +103,7 @@ const HeroSection = () => {
                   {t("hero.buttons.contact")}
                   <span className="transition-transform group-hover:translate-x-1">→</span>
                 </a>
-              </motion.div>
+              </Magnetic>
             </motion.div>
 
             {/* Calendly Popup */}
@@ -155,17 +123,18 @@ const HeroSection = () => {
               {[
                 { icon: Linkedin, href: "https://www.linkedin.com/in/krishnakondoju" },
                 { icon: Github, href: "https://github.com/krishnaUIDev" },
-                { icon: Mail, href: "mailto:hello@example.com" }, // No email in resume, keeping placeholder
+                { icon: Mail, href: "mailto:hello@example.com" },
               ].map(({ icon: Icon, href }) => (
-                <a
-                  key={href}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all hover:border-foreground/30 hover:text-foreground"
-                >
-                  <Icon size={16} />
-                </a>
+                <Magnetic key={href} strength={0.4}>
+                  <a
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all hover:border-foreground/30 hover:text-foreground"
+                  >
+                    <Icon size={16} />
+                  </a>
+                </Magnetic>
               ))}
             </motion.div>
           </div>
@@ -179,7 +148,6 @@ const HeroSection = () => {
           >
             {/* 3D Flip Avatar Card */}
             <div className="perspective-1000 group relative h-72 w-72 md:h-80 md:w-80">
-              {/* Outer pulsing glow stays behind the flip */}
               <div className="pointer-events-none absolute inset-[-20px] animate-pulse-glow rounded-full bg-primary/15 blur-3xl" />
 
               <motion.div
@@ -187,7 +155,6 @@ const HeroSection = () => {
                 whileHover={{ rotateY: 180 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
-                {/* Front Side */}
                 <div className="backface-hidden absolute inset-0 z-10">
                   <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-primary/20 bg-gradient-to-br from-primary/20 to-primary/5 shadow-2xl backdrop-blur-sm">
                     <img
@@ -198,7 +165,6 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Back Side */}
                 <div className="backface-hidden rotate-y-180 absolute inset-0 z-20">
                   <div className="glass-card flex h-full w-full flex-col items-center justify-center rounded-full border-primary/30 p-8 text-center shadow-2xl">
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">

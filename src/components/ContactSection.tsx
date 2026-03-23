@@ -3,6 +3,7 @@ import { Mail, Linkedin, Github } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Magnetic } from "./ui/Magnetic";
 
 const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
@@ -55,19 +56,17 @@ const ContactSection = () => {
           >
             <div className="space-y-6">
               {contactLinks.map((link) => (
-                <a key={link.label} href={link.href} className="group flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-secondary/50 text-muted-foreground transition-all duration-300 group-hover:border-primary/30 group-hover:text-primary">
-                    <link.icon size={20} />
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      {link.label}
+                <Magnetic key={link.label} strength={0.3}>
+                  <a href={link.href} className="group flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-secondary/50 text-muted-foreground transition-all duration-300 group-hover:border-primary/30 group-hover:text-primary">
+                      <link.icon size={20} />
                     </div>
-                    <div className="text-foreground transition-colors group-hover:text-primary">
-                      {link.value}
+                    <div>
+                      <div className="text-sm font-medium text-foreground">{link.label}</div>
+                      <div className="text-xs text-muted-foreground">{link.value}</div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </Magnetic>
               ))}
             </div>
           </motion.div>

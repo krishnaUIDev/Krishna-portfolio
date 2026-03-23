@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-
 import { useQuery } from "@tanstack/react-query";
+import { Skeleton } from "./ui/skeleton";
 
 interface Experience {
   company: string;
@@ -46,9 +46,27 @@ const ExperienceSection = () => {
 
           <div className="space-y-0">
             {isLoading ? (
-              <div className="py-20 text-center">
-                <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-                <p className="mt-4 text-sm text-muted-foreground">Loading career history...</p>
+              <div className="space-y-8 py-8">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="relative pl-8 md:pl-20">
+                    <Skeleton className="absolute left-0 top-10 h-2.5 w-2.5 -translate-x-1/2 rounded-full md:left-8" />
+                    <div className="surface-card p-6 md:p-8">
+                      <div className="flex justify-between gap-4">
+                        <div className="w-1/3 space-y-2">
+                          <Skeleton className="h-6 w-full" />
+                          <Skeleton className="h-4 w-1/2" />
+                        </div>
+                        <Skeleton className="h-4 w-24" />
+                      </div>
+                      <Skeleton className="mt-6 h-16 w-full" />
+                      <div className="mt-6 flex gap-2">
+                        <Skeleton className="h-6 w-16" />
+                        <Skeleton className="h-6 w-16" />
+                        <Skeleton className="h-6 w-16" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : error ? (
               <div className="py-20 text-center text-red-500">
