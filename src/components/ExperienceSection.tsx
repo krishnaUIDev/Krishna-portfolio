@@ -1,31 +1,13 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { useQuery } from "@tanstack/react-query";
-import { Skeleton } from "./ui/skeleton";
-
-interface Experience {
-  company: string;
-  role: string;
-  period: string;
-  description: string;
-  highlights: string[];
-  tags: string[];
-  rank: number;
-}
+import { Skeleton } from "@/components/ui/skeleton";
+import { useExperiences } from "@/hooks/useExperiences";
 
 const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
 const ExperienceSection = () => {
   const { t } = useTranslation();
-
-  const { data: experiences, isLoading, error } = useQuery<Experience[]>({
-    queryKey: ["experiences"],
-    queryFn: async () => {
-      const res = await fetch("/api/experience");
-      if (!res.ok) throw new Error("Failed to fetch experiences");
-      return res.json();
-    },
-  });
+  const { data: experiences, isLoading, error } = useExperiences();
 
   return (
     <section id="experience" className="section-padding">

@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-import { toast } from "sonner";
 import { Magnetic } from "./ui/Magnetic";
+import { useContact } from "@/hooks/useContact";
 
 const spring = { type: "spring" as const, stiffness: 200, damping: 25 };
 
@@ -29,7 +28,8 @@ const contactLinks = [
 ];
 
 const ContactSection = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const { sendMessage, isSubmitting } = useContact();
 
   return (
     <section id="contact" className="section-padding">
@@ -77,65 +77,32 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={spring}
-            className="glass-card rounded-2xl p-8"
+            className="surface-card p-6 md:p-8"
           >
             <form
-              className="space-y-4"
+              className="space-y-6"
               onSubmit={async (e) => {
                 e.preventDefault();
                 const formData = new FormData(e.currentTarget);
                 const data = {
-                  name: formData.get("name"),
-                  email: formData.get("email"),
-                  message: formData.get("message"),
+                  name: formData.get("name") as string,
+                  email: formData.get("email") as string,
+                  message: formData.get("message") as string,
                 };
 
-                const promise = fetch("/api/contact", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(data),
-                }).then(async (res) => {
-                  const contentType = res.headers.get("content-type");
-                  if (!contentType || !contentType.includes("application/json")) {
-                    if (res.status === 404) {
-                      throw new Error(
-                        i18n.language === "es"
-                          ? "Error 404: El backend no se encontró. Por favor, usa 'npm run vercel-dev' para el desarrollo local."
-                          : "Error 404: The backend was not found. Please use 'npm run vercel-dev' for local development."
-                      );
-                    }
-                    throw new Error("Server returned a non-JSON response");
-                  }
-
-                  const result = await res.json();
-                  if (!res.ok) {
-                    throw new Error(result.error || "Failed to send message");
-                  }
-                  return result;
-                });
-
-                toast.promise(promise, {
-                  loading: t("contact.form.submitting") || "Sending message...",
-                  success: t("contact.form.success") || "Message sent successfully!",
-                  error: (err) => err.message || "Failed to send message",
-                });
-
-                try {
-                  await promise;
+                const result = await sendMessage(data);
+                if (result.success) {
                   (e.target as HTMLFormElement).reset();
-                } catch (err) {
-                  console.error(err);
                 }
               }}
             >
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     {t("contact.form.name")}
                   </label>
                   <input
                     name="name"
-                    type="text"
                     required
                     placeholder={t("contact.form.placeholder.name")}
                     className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/50"
@@ -168,9 +135,10 @@ const ContactSection = () => {
               </div>
               <button
                 type="submit"
-                className="shimmer-button w-full rounded-xl bg-primary py-4 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
+                disabled={isSubmitting}
+                className="shimmer-button w-full rounded-xl bg-primary py-4 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110 disabled:opacity-50"
               >
-                {t("contact.form.submit")}
+                {isSubmitting ? t("contact.form.submitting") : t("contact.form.submit")}
               </button>
             </form>
           </motion.div>
