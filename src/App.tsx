@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { SignInButton, SignOutButton, SignedIn, SignedOut } from "@clerk/clerk-react";
 import { lazy, Suspense } from "react";
 const Index = lazy(() => import("./pages/Index.tsx"));
@@ -43,6 +44,7 @@ const App = () => (
         </Suspense>
       </BrowserRouter>
       <Analytics />
+      <SpeedInsights />
     </TooltipProvider>
   </QueryClientProvider>
 );
