@@ -136,10 +136,10 @@ const AIChatbot = () => {
   const quickQuestions =
     i18n.language === "es"
       ? [
-          "¿Cuales son tus habilidades?",
-          "¿Estás disponible para trabajar?",
-          "¿Cómo puedo contactarte?",
-        ]
+        "¿Cuales son tus habilidades?",
+        "¿Estás disponible para trabajar?",
+        "¿Cómo puedo contactarte?",
+      ]
       : ["What are your top skills?", "Are you available for hire?", "How can I contact you?"];
 
   return (
@@ -173,6 +173,7 @@ const AIChatbot = () => {
               <button
                 onClick={() => setIsOpen(false)}
                 className="rounded-lg p-1 text-muted-foreground transition-colors hover:bg-secondary/50"
+                aria-label="Close AI Assistant"
               >
                 <X size={16} />
               </button>
@@ -191,20 +192,18 @@ const AIChatbot = () => {
                     className={`flex max-w-[85%] gap-2 ${m.role === "user" ? "flex-row-reverse" : ""}`}
                   >
                     <div
-                      className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${
-                        m.role === "user"
+                      className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${m.role === "user"
                           ? "bg-primary/20 text-primary"
                           : "bg-secondary text-muted-foreground"
-                      }`}
+                        }`}
                     >
                       {m.role === "user" ? <User size={12} /> : <Bot size={12} />}
                     </div>
                     <div
-                      className={`rounded-2xl p-3 text-sm leading-relaxed ${
-                        m.role === "user"
+                      className={`rounded-2xl p-3 text-sm leading-relaxed ${m.role === "user"
                           ? "rounded-tr-none bg-primary text-white"
                           : "rounded-tl-none border border-border/50 bg-secondary/50 text-foreground"
-                      }`}
+                        }`}
                     >
                       {m.content}
                     </div>
@@ -269,9 +268,9 @@ const AIChatbot = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className={`group flex h-12 w-12 items-center justify-center rounded-full shadow-2xl transition-all duration-500 ${
-          isOpen ? "rotate-90 bg-secondary text-foreground" : "bg-primary text-white"
-        }`}
+        className={`group flex h-12 w-12 items-center justify-center rounded-full shadow-2xl transition-all duration-500 ${isOpen ? "rotate-90 bg-secondary text-foreground" : "bg-primary text-white"
+          }`}
+        aria-label={isOpen ? "Close AI Assistant" : "Open AI Assistant"}
       >
         <AnimatePresence mode="wait">
           {isOpen ? (

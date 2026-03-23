@@ -70,14 +70,17 @@ const Store = () => {
                 <product.icon className="text-primary" size={24} />
               </div>
 
-              <h3 className="mb-2 text-2xl font-bold">{product.name}</h3>
+              <h2 className="mb-2 text-2xl font-bold">{product.name}</h2>
               <p className="mb-4 font-mono text-xl font-bold text-primary">{product.price}</p>
 
               <p className="mb-8 flex-1 leading-relaxed text-muted-foreground">
                 {product.description}
               </p>
 
-              <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 font-bold text-white shadow-lg shadow-primary/20 transition-all hover:brightness-110 group-hover:gap-4">
+              <button
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 font-bold text-white shadow-lg shadow-primary/20 transition-all hover:brightness-110 group-hover:gap-4"
+                aria-label={`Purchase ${product.name}`}
+              >
                 Purchase Service
                 <ArrowRight size={18} />
               </button>
