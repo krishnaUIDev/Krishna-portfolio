@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, ChevronDown, FileDown, Calendar } from "lucide-react";
-import { useState } from "react";
-import { PopupModal } from "react-calendly";
+import { lazy, Suspense, useState } from "react";
+const PopupModal = lazy(() => import("react-calendly").then(m => ({ default: m.PopupModal })));
 import { useTranslation } from "react-i18next";
 import GridBackground from "./GridBackground";
 import { Magnetic } from "./ui/Magnetic";
@@ -109,12 +109,16 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Calendly Popup */}
-            <PopupModal
-              url="https://calendly.com/krishnakanth"
-              onModalClose={() => setIsOpen(false)}
-              open={isOpen}
-              rootElement={document.getElementById("root")!}
-            />
+            <Suspense fallback={null}>
+              {isOpen && (
+                <PopupModal
+                  url="https://calendly.com/krishnakanth"
+                  onModalClose={() => setIsOpen(false)}
+                  open={isOpen}
+                  rootElement={document.getElementById("root")!}
+                />
+              )}
+            </Suspense>
 
             <motion.div
               initial={{ opacity: 0 }}

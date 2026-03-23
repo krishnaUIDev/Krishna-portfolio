@@ -1,12 +1,20 @@
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import SkillsSection from "@/components/SkillsSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import BlogSection from "@/components/BlogSection";
-import ContactSection from "@/components/ContactSection";
-import AIChatbot from "@/components/AIChatbot";
+
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const ExperienceSection = lazy(() => import("@/components/ExperienceSection"));
+const SkillsSection = lazy(() => import("@/components/SkillsSection"));
+const ProjectsSection = lazy(() => import("@/components/ProjectsSection"));
+const BlogSection = lazy(() => import("@/components/BlogSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const AIChatbot = lazy(() => import("@/components/AIChatbot"));
+
+const SectionLoader = () => (
+  <div className="flex w-full items-center justify-center py-20 opacity-50">
+    <div className="h-6 w-6 animate-pulse rounded-full bg-primary/20" />
+  </div>
+);
 
 const Index = () => {
   return (
@@ -31,15 +39,29 @@ const Index = () => {
 
       <Navbar />
       <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <BlogSection />
-      <ContactSection />
+      <Suspense fallback={<SectionLoader />}>
+        <AboutSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ExperienceSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <SkillsSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ProjectsSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <BlogSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ContactSection />
+      </Suspense>
 
       {/* AI Assistant */}
-      <AIChatbot />
+      <Suspense fallback={null}>
+        <AIChatbot />
+      </Suspense>
     </div>
   );
 };
