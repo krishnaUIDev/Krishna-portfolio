@@ -30,7 +30,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap"
     rel="stylesheet" />
-  <link rel="preload" as="image" href="/avatar.avif" fetchpriority="high" />
+  <link rel="preload" as="image" href="/avatar-800.avif"
+    imagesrcset="/avatar-400.avif 400w, /avatar-800.avif 800w, /avatar-1024.avif 1024w"
+    imagesizes="(max-width: 768px) 256px, 320px" fetchpriority="high" />
 </head>
 
 <body>

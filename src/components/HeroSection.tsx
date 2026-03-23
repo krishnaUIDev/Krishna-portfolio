@@ -162,7 +162,9 @@ const HeroSection = () => {
                 <div className="backface-hidden absolute inset-0 z-10">
                   <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-primary/20 bg-gradient-to-br from-primary/20 to-primary/5 shadow-2xl backdrop-blur-sm">
                     <img
-                      src="/avatar.avif"
+                      src="/avatar-800.avif"
+                      srcSet="/avatar-400.avif 400w, /avatar-800.avif 800w, /avatar-1024.avif 1024w"
+                      sizes="(max-width: 768px) 256px, 320px"
                       alt="Krishnakanth Kondoju"
                       width={320}
                       height={320}
