@@ -148,9 +148,6 @@ const HeroSection = () => {
 
           {/* Right - Profile photo area with floating stats */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ ...spring, delay: 0.3 }}
             className="relative flex justify-center"
           >
             {/* 3D Flip Avatar Card */}
