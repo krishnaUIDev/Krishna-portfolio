@@ -51,11 +51,10 @@ const Navbar = () => {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-          scrolled
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${scrolled
             ? "border-b border-border bg-background/80 shadow-lg backdrop-blur-xl"
             : "bg-transparent"
-        }`}
+          }`}
       >
         {/* Scroll Progress Bar */}
         <motion.div
@@ -64,7 +63,7 @@ const Navbar = () => {
         />
 
         <div className="container-main flex h-16 items-center justify-between">
-          <a href="#" className="text-lg font-bold tracking-tight text-foreground">
+          <a href="#" aria-label="Home" className="text-lg font-bold tracking-tight text-foreground">
             <span className="text-primary">K</span>K
           </a>
 
@@ -106,6 +105,7 @@ const Navbar = () => {
             <button
               className="ml-2 rounded-lg p-2 text-foreground transition-colors hover:bg-secondary"
               onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -163,6 +163,7 @@ const Navbar = () => {
             key={item.label}
             href={item.href}
             title={item.label}
+            aria-label={`Go to ${item.label}`}
             className="h-2.5 w-2.5 rounded-full border border-border bg-secondary transition-all duration-200 hover:border-primary hover:bg-primary"
           />
         ))}

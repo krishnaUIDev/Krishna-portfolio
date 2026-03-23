@@ -44,7 +44,7 @@ const ProjectsSection = () => {
               className="surface-card group p-6 transition-all duration-300 hover:border-primary/30"
             >
               <div className="mb-4 flex items-center justify-between">
-                <span className="text-2xl">{project.emoji}</span>
+                <span role="img" aria-label="Project icon" className="text-2xl">{project.emoji}</span>
                 <span className="text-data text-muted-foreground">{project.period}</span>
               </div>
 

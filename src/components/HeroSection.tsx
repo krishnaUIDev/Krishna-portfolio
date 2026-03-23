@@ -76,6 +76,7 @@ const HeroSection = () => {
               <Magnetic strength={0.4}>
                 <button
                   onClick={() => setIsOpen(true)}
+                  aria-label={t("hero.buttons.meeting")}
                   className="group relative flex items-center gap-2 overflow-hidden rounded-xl bg-primary px-8 py-4 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Calendar size={18} />
@@ -88,6 +89,7 @@ const HeroSection = () => {
                 <a
                   href="/resume.pdf"
                   download
+                  aria-label={t("hero.buttons.resume")}
                   className="flex items-center gap-2 rounded-xl border border-border/50 bg-card/30 px-7 py-4 text-sm font-bold text-muted-foreground backdrop-blur-md transition-all hover:border-primary/50 hover:text-foreground"
                 >
                   <FileDown size={18} />
@@ -130,6 +132,7 @@ const HeroSection = () => {
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
+                    aria-label={href.includes("linkedin") ? "LinkedIn" : href.includes("github") ? "GitHub" : "Email"}
                     className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all hover:border-foreground/30 hover:text-foreground"
                   >
                     <Icon size={16} />
@@ -160,6 +163,9 @@ const HeroSection = () => {
                     <img
                       src="/avatar.png"
                       alt="Krishnakanth Kondoju"
+                      width={320}
+                      height={320}
+                      loading="eager"
                       className="h-full w-full object-cover"
                     />
                   </div>
